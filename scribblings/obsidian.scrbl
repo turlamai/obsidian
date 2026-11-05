@@ -6,7 +6,7 @@
           (for-label obsidian))
 
 @title{Obsidian: Obsidian Flavored Markdown for Racket}
-@author{@(author+email "jrtxio" "jrtxio@users.noreply.github.com")}
+@author{@(author+email "turlamai" "turlamai@users.noreply.github.com")}
 
 @defmodule[obsidian]
 
