@@ -28,5 +28,4 @@ jobs:
         run: |
           raco setup obsidian
           scribble --redirect-main https://docs.racket-lang.org \
-                   --dest doc --dest-name main \
                    --dest doc --dest-name main scribblings/obsidian.scrbl
