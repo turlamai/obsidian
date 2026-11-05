@@ -1,7 +1,7 @@
 #lang info
 
 (define collection "obsidian")
-(define version "0.1.0")
+(define version "0.1")
 (define pkg-desc
   "Obsidian Flavored Markdown for Racket: frontmatter, wikilinks, embeds, callouts, tags, highlights and task lists as an AST layer over the markdown package")
 (define license '(MIT))

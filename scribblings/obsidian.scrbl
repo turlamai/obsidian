@@ -104,10 +104,27 @@ Each @tt{rewrite-*} function takes the element list produced by
 
 Source-level passes (needed because the underlying parser eats the
 @tt{!} of embeds and merges blockquote lines, both fatal to embeds and
-callouts) are exposed too: @racket[mark-embeds], @racket[mark-callouts] and
-@racket[mark-dashes] — all code-safe via @racket[map-source-text], which
-applies a function to ordinary text while fenced blocks and inline code pass
-through byte-for-byte.
+callouts) are exposed too.
+
+@defproc[(map-source-text [src string?] [fn (-> string? string?)]) string?]{
+  Applies @racket[fn] to ordinary text of @racket[src]; fenced code blocks
+  and inline code spans pass through byte-for-byte.
+}
+
+@defproc[(mark-embeds [src string?]) string?]{
+  Code-safe source pass replacing @tt{![[target]]} with a marker form that
+  survives the upstream parser.
+}
+
+@defproc[(mark-callouts [src string?]) string?]{
+  Code-safe source pass rewriting callout blockquotes into marker-delimited
+  plain Markdown that @racket[rewrite-callouts] collects.
+}
+
+@defproc[(mark-dashes [src string?]) string?]{
+  Code-safe source pass escaping hyphen-digit sequences so the upstream
+  parser's smart dashes cannot corrupt tags and slugs.
+}
 
 @section{Known limitations}
 
