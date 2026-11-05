@@ -1,0 +1,32 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        racket-version: ['stable', 'current']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Bogdanp/setup-racket@v1.11
+        with:
+          architecture: x64
+          distribution: full
+          variant: CS
+          version: ${{ matrix.racket-version }}
+      - name: Install package and dependencies
+        run: raco pkg install --auto --link "$GITHUB_WORKSPACE"
+      - name: Setup gate (dependency check)
+        run: raco setup --check-pkg-deps obsidian
+      - name: Tests
+        run: raco test test scribblings
+      - name: Docs build
+        run: |
+          raco setup obsidian
+          scribble --redirect-main https://docs.racket-lang.org \
+                   --dest doc --dest-name main \
+                   --dest doc --dest-name main scribblings/obsidian.scrbl
