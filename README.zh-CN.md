@@ -1,5 +1,7 @@
 # obsidian
 
+**支持：**[问题与反馈](https://github.com/turlamai/obsidian/issues) · [当前交付策略](https://github.com/turlamai/turlamai.github.io/blob/master/PORTFOLIO.zh-CN.md)
+
 [English](README.md) · 简体中文
 
 Racket 版 Obsidian 方言 Markdown：frontmatter、`[[wikilinks]]`、`![[embeds]]`、callout、行内标签、高亮与任务列表——构建在 [`markdown`](https://pkgs.racket-lang.org/pkg/markdown) 包之上的方言层（AST 级）。
